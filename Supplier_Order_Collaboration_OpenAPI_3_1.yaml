@@ -355,6 +355,9 @@ paths:
       responses:
         '200':
           description: Shipments returned successfully.
+          headers:
+            X-Correlation-Id:
+              $ref: '#/components/headers/CorrelationId'
           content:
             application/json:
               schema: {$ref: '#/components/schemas/ShipmentPage'}
@@ -485,7 +488,11 @@ components:
 
   headers:
     CorrelationId:
-      description: Correlation identifier used for tracing and support.
+      description: |
+        Correlation identifier used for tracing and support. Returned on every response,
+        success or error. Echoes the consumer's X-Correlation-Id request header, or the
+        value the service generated when it was omitted. Matches correlationId in
+        application/problem+json error bodies.
       schema: {type: string}
 
   schemas:
@@ -702,6 +709,9 @@ components:
   responses:
     BadRequest:
       description: The request is malformed or contains invalid parameters.
+      headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
       content:
         application/problem+json:
           schema: {$ref: '#/components/schemas/ProblemDetails'}
@@ -719,6 +729,9 @@ components:
                 message: Must be an RFC 3339 date-time.
     Unauthorized:
       description: Authentication credentials are missing, invalid, expired, or unavailable.
+      headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
       content:
         application/problem+json:
           schema: {$ref: '#/components/schemas/ProblemDetails'}
@@ -733,6 +746,9 @@ components:
             errorCode: AUTHENTICATION_REQUIRED
     Forbidden:
       description: The authenticated consumer is not authorized for the resource or operation.
+      headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
       content:
         application/problem+json:
           schema: {$ref: '#/components/schemas/ProblemDetails'}
@@ -747,6 +763,9 @@ components:
             errorCode: SUPPLIER_SCOPE_DENIED
     NotFound:
       description: The requested resource does not exist or is not visible to the consumer.
+      headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
       content:
         application/problem+json:
           schema: {$ref: '#/components/schemas/ProblemDetails'}
@@ -761,6 +780,9 @@ components:
             errorCode: PURCHASE_ORDER_NOT_FOUND
     Conflict:
       description: The request conflicts with the current state or duplicates a prior idempotent request.
+      headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
       content:
         application/problem+json:
           schema: {$ref: '#/components/schemas/ProblemDetails'}
@@ -775,6 +797,9 @@ components:
             errorCode: ACKNOWLEDGEMENT_ALREADY_EXISTS
     UnprocessableEntity:
       description: The request is syntactically valid but violates a business rule.
+      headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
       content:
         application/problem+json:
           schema: {$ref: '#/components/schemas/ProblemDetails'}
@@ -790,6 +815,8 @@ components:
     TooManyRequests:
       description: The consumer has exceeded its allowed request rate.
       headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
         Retry-After:
           description: Number of seconds before the consumer should retry.
           schema: {type: integer, minimum: 1}
@@ -807,6 +834,9 @@ components:
             errorCode: RATE_LIMIT_EXCEEDED
     InternalServerError:
       description: An unexpected error occurred. The correlation identifier should be supplied to support.
+      headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
       content:
         application/problem+json:
           schema: {$ref: '#/components/schemas/ProblemDetails'}
@@ -822,6 +852,8 @@ components:
     ServiceUnavailable:
       description: The service or a required dependency is temporarily unavailable.
       headers:
+        X-Correlation-Id:
+          $ref: '#/components/headers/CorrelationId'
         Retry-After:
           description: Number of seconds before retrying.
           schema: {type: integer, minimum: 1}
