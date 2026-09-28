@@ -4,6 +4,8 @@ An Amplify Fusion implementation of a Supplier Order Collaboration API defined b
 
 Leverages the [Supplier Order Collaboration Mock backend](https://github.com/lbrenman/mock-purchase-order-backend).
 
+An MCP Server for the backend systems is also included.
+
 Currently supports:
 
 * API Key authentication
