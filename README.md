@@ -11,5 +11,8 @@ Currently supports:
 * API Key authentication
   * Create a Fusion conusmer app per consumer (e.g. consumer id)
   * Create an entry in the `consumerIdLookup` cross reference table mapping the conusmer app to the consumerId
+* A web app for front end API calls
 * GET /purchase-orders
-    * `supplierId` query param abd pagination not yet supported
+  * `supplierId` query param, pagination and some error handling not yet implemented
+* GET /purchase-orders/{purchaseOrderId}
+   * `supplierId` query param, pagination and some error handling not yet implemented
