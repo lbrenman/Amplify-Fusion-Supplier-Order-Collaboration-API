@@ -42,6 +42,7 @@ An MCP Server for the backend systems is also included.
     ![image](images/activity.png)
     ![image](images/activity-details.png)
     ![image](images/activity-error-details.png)
+  * When doing demos, if you need to reset the data to get PO's back to the original state, you can run `npm run seed:reset` in your back end. This will also updates the dates for the data so they do not look stale
 
 * For Backend MCP Server
   * Activate the `SupplierOrderCollaborationMCP` MCP Server and get it's URL
