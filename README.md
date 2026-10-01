@@ -17,7 +17,7 @@ An MCP Server for the backend systems is also included.
 * GET /purchase-orders/{purchaseOrderId}
    * `supplierId` query param, pagination and some error handling not yet implemented
 *  POST /purchase-orders/{purchaseOrderId}/acknowledge
-   * Response body and location header and some error handling not yet implemented
+   * Some error handling not yet implemented
 
 * A web app for front end API calls
 
