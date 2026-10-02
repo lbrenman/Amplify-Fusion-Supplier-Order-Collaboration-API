@@ -1,8 +1,8 @@
 # Amplify Fusion - Supplier Order Collaboration API
 
-An Amplify Fusion implementation of a Supplier Order Collaboration API defined by [this OpenAPI spec](Supplier_Order_Collaboration_OpenAPI_3_1.yaml).
+An Amplify Fusion implementation of a Supplier Order Collaboration facade API that provides business value by streamlining the PO process.
 
-Leverages the [Supplier Order Collaboration Mock backend](https://github.com/lbrenman/mock-purchase-order-backend).
+Leverages the [Supplier Order Collaboration Mock backend](https://github.com/lbrenman/mock-purchase-order-backend). In that repo, you'll find the the facade API spec as well as a facade web app for testing the API.
 
 An MCP Server for the backend systems is also included.
 
